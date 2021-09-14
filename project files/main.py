@@ -84,6 +84,9 @@ while running:
     # If the player has won the game
     elif flag == 2:
         won()
+        file = open('high_score.txt', 'w')
+        file.write(str(50))
+        file.close()
         display_score(10, 10)
         # Play background music only once
         if bg_temp == 0:
