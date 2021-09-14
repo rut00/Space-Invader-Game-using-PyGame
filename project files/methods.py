@@ -1,6 +1,4 @@
-# import pygame
 import math
-
 from declarations import *
 
 # Initialize pygame
