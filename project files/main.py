@@ -1,14 +1,6 @@
-import pygame
-import math
-import random
 import time
-
-# Import 'mixer' library for handling music
-from pygame import mixer
-
-# Import other necessary files
-from declarations import *
 from methods import *
+from declarations import *
 
 # Initialize pygame
 pygame.init()
@@ -68,6 +60,17 @@ while running:
     # Game over screen
     elif flag == 1:
         game_over()
+
+        # Reading the High Score and updating it if necessary
+        file = open('high_score.txt', 'r')
+        high_score = int(file.read())
+        file.close()
+
+        if score > high_score:
+            file = open('high_score.txt', 'w')
+            file.write(str(score))
+            file.close()
+
         display_score(10, 10)
         # for loop to handle and execute the events e.g. key press / mouse click
         for event in pygame.event.get():
@@ -113,7 +116,7 @@ while running:
                 if event.key == pygame.K_RIGHT:
                     playerX_change = 2.75
                 if event.key == pygame.K_SPACE:
-                    if bullet_state is "ready":
+                    if bullet_state == "ready":
                         bulletX = playerX
                         fire_bullet(bulletX,bulletY)
                         mixer.Sound('bullet_shoot.wav').play()
@@ -618,7 +621,7 @@ while running:
         if bulletY <= 50:
             bulletY = playerY
             bullet_state = "ready"
-        if bullet_state is "fire":
+        if bullet_state == "fire":
             fire_bullet(bulletX,bulletY)
             bulletY -= bulletY_change
 

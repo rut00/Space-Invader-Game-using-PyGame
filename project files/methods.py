@@ -1,4 +1,4 @@
-import pygame
+# import pygame
 import math
 
 from declarations import *
@@ -9,20 +9,24 @@ pygame.init()
 # Function for home screen
 def home_page():
     mouse_position = pygame.mouse.get_pos()
-    home_font = pygame.font.Font('college.ttf', 140)
+    home_font = pygame.font.Font('college.ttf', 100)
     play_font = pygame.font.Font('college.ttf', 50)
-    screen.blit(home_font.render("-----------", True, (255, 255, 255)), (25, 20))
-    screen.blit(home_font.render("SPACE", True, (255, 255, 255)), (210, 130))
-    screen.blit(home_font.render("INVADERS", True, (255, 255, 255)), (100, 270))
-    screen.blit(home_font.render("-----------", True, (255, 255, 255)), (25, 390))
-    screen.blit(play_font.render("PLAY", True, (0, 255, 0)), (335, 490))
-    if mouse_position[0]>=332 and mouse_position[0]<=450 and mouse_position[1]>=488 and mouse_position[1]<=540:
-        screen.blit(play_font.render("PLAY", True, (255, 255, 0)), (335, 490))
+    screen.blit(home_font.render("---------------", True, (255, 255, 255)), (25, 20))
+    screen.blit(home_font.render("SPACE", True, (255, 255, 255)), (250, 100))
+    screen.blit(home_font.render("INVADERS", True, (255, 255, 255)), (180, 200))
+    screen.blit(home_font.render("---------------", True, (255, 255, 255)), (25, 290))
+    screen.blit(play_font.render("PLAY", True, (0, 255, 0)), (330, 380))
+    file = open('high_score.txt', 'r')
+    high_score = file.read()
+    file.close()
+    screen.blit(play_font.render("HIGH SCORE : " + str(high_score), True, (255, 255, 255)), (210, 470))
+    if mouse_position[0]>=330 and mouse_position[0]<=450 and mouse_position[1]>=380 and mouse_position[1]<=430:
+        screen.blit(play_font.render("PLAY", True, (255, 255, 0)), (330, 380))
 
 # Function to check whether the position of cursor is within the specified range (on the 'Play' option)
 def play():
     mouse_position = pygame.mouse.get_pos()
-    if mouse_position[0]>=332 and mouse_position[0]<=450 and mouse_position[1]>=488 and mouse_position[1]<=540:
+    if mouse_position[0]>=330 and mouse_position[0]<=450 and mouse_position[1]>=380 and mouse_position[1]<=430:
         return True
     else:
         return False

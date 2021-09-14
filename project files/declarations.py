@@ -33,12 +33,12 @@ playerX_change = 0
 
 # Enemy (list to hold number of enemies)
 # Level 1 enemy
+num_of_enemies1 = 10
 enemy1_image = []
 enemy1X = []
 enemy1Y = []
 enemy1X_change = []
 enemy1Y_change = []
-num_of_enemies1 = 10
 level1_flag = 0
 
 # for loop to put data to enemy list
